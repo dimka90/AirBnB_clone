@@ -61,12 +61,34 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(obj.updated_at)
 
     def test_str_(self):
+        """
+        A function that test for the string representation of an instance
+        """
         obj = BaseModel()
-        self.assertEqual(obj.__str__, "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__))
+        self.assertEqual(obj.__str__, "[{}] ({}) {}".format(obj.__class__.__name__, obj.id, obj.__dict__))
 
     def test_save(self):
+        """
+        A function that saves the state of an object
+        """
         obj = BaseModel()
         obj.save()
         self.assertTrue(hasattr(obj, "save"))
 
         self.assertTrue(obj.updated_at, datetime.now())
+
+    def test_dict(self):
+        """
+        A function that returns the dictionary representation in a 
+        dictionary format
+        """
+
+        obj = BaseModel()
+        self.assertTrue(hasattr(obj,"to_dict"))
+
+        dict_obj = obj.to_dict()
+
+        self.assertTrue(dict_obj, {"id":obj.id, "__class__":self.__class__.__name__, "created_at":obj.created_at.isoformat(), "updated_at":obj.updated_at.isoformat()})
+
+
+
