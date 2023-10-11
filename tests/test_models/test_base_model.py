@@ -62,4 +62,11 @@ class TestBaseModel(unittest.TestCase):
 
     def test_str_(self):
         obj = BaseModel()
-        self.assertEqual(obj.__str__,"[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__))
+        self.assertEqual(obj.__str__, "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__))
+
+    def test_save(self):
+        obj = BaseModel()
+        obj.save()
+        self.assertTrue(hasattr(obj, "save"))
+
+        self.assertTrue(obj.updated_at, datetime.now())

@@ -23,5 +23,15 @@ class BaseModel:
         self.updated_at = self.created_at
 
     def __str__(self):
+        """
+        A function that gives the string representation of the instance
+        """
 
-        return "[{}] ({}) {}".format(self.__class.__name__, self.id, self.__dict__ )
+        return "[{}] ({}) {}".format(self.__class.__name__, self.id, self.__dict__)
+
+    def save(self):
+        """
+        A function that update the value of the updated object
+        """
+
+        self.updated_at = datetime.now()
