@@ -59,3 +59,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(hasattr(obj, "updated_at"))
         self.assertEqual(obj.created_at, obj.updated_at)
         self.assertIsNotNone(obj.updated_at)
+
+    def test_str_(self):
+        obj = BaseModel()
+        self.assertEqual(obj.__str__,"[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__))
