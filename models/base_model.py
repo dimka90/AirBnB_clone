@@ -5,6 +5,7 @@ A python module that create a Baseclass model
 that other classes will inherit from
 """
 import uuid
+from datetime import datetime
 
 
 class BaseModel:
@@ -14,4 +15,9 @@ class BaseModel:
     """
 
     def __init__(self):
+        """
+        A function that initialise the state of an object
+        """
         self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = self.created_at
