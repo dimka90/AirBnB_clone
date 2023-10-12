@@ -14,13 +14,31 @@ class BaseModel:
     other attributes that will different each class from the other
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         A function that initialise the state of an object
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = self.created_at
+        keys_to_include = ["id", "created_at", "updated_at"]
+
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == '__class___':
+                    continue
+                elif key == 'updated_at':
+                    value == datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                elif key == 'created_at':
+                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                elif 'id' not in kwargs.keys():
+                    self.id = str(uuid.uuid4())
+                elif 'created_at' not in kwargs.keys():
+                    self.created_at = datetime.now()
+                elif 'updated_at' not in kwargs.keys():
+                    self.updated_at = datetime.now()
+                setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
 
     def __str__(self):
         """

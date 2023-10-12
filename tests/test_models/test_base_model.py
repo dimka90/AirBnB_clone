@@ -88,7 +88,23 @@ class TestBaseModel(unittest.TestCase):
 
         dict_obj = obj.to_dict()
 
-        self.assertTrue(dict_obj, {"id":obj.id, "__class__":self.__class__.__name__, "created_at":obj.created_at.isoformat(), "updated_at":obj.updated_at.isoformat()})
+        self.assertTrue(dict_obj, {"id":obj.id, "__class__":self.__class__.__name__, "created_at":obj.created_at, "updated_at":obj.updated_at})
+
+    def test_kwarg(self):
+        """
+        A function that test for the creation of an instance from
+        a dictionary
+        """
+        obj = BaseModel()
+        dict_obj = obj.to_dict()
+        obj1 = BaseModel(**dict_obj)
+        self.assertTrue(hasattr(obj1, "id"))
+        self.assertIsInstance(obj1, BaseModel)
+        self.assertTrue(hasattr(obj1, "__class__"))
+
+
+
+
 
 
 
