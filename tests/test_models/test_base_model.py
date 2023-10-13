@@ -4,7 +4,9 @@ A module that test the Basemodel class
 """
 import unittest
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
 from datetime import datetime
+import os
 
 
 class TestBaseModel(unittest.TestCase):
@@ -65,7 +67,9 @@ class TestBaseModel(unittest.TestCase):
         A function that test for the string representation of an instance
         """
         obj = BaseModel()
-        self.assertEqual(obj.__str__, "[{}] ({}) {}".format(obj.__class__.__name__, obj.id, obj.__dict__))
+        self.assertEqual(obj.__str__,
+                         "[{}] ({}) {}".format(obj.__class__.__name__,
+                         obj.id, obj.__dict__))
 
     def test_save(self):
         """
@@ -79,16 +83,18 @@ class TestBaseModel(unittest.TestCase):
 
     def test_dict(self):
         """
-        A function that returns the dictionary representation in a 
+        A function that returns the dictionary representation in a
         dictionary format
         """
 
         obj = BaseModel()
-        self.assertTrue(hasattr(obj,"to_dict"))
+        self.assertTrue(hasattr(obj, "to_dict"))
 
         dict_obj = obj.to_dict()
 
-        self.assertTrue(dict_obj, {"id":obj.id, "__class__":self.__class__.__name__, "created_at":obj.created_at, "updated_at":obj.updated_at})
+        self.assertTrue(dict_obj, {"id": obj.id, "__class__":
+                        self.__class__.__name__, "created_at":
+                        obj.created_at, "updated_at": obj.updated_at})
 
     def test_kwarg(self):
         """
@@ -97,14 +103,29 @@ class TestBaseModel(unittest.TestCase):
         """
         obj = BaseModel()
         dict_obj = obj.to_dict()
+        """
         obj1 = BaseModel(**dict_obj)
         self.assertTrue(hasattr(obj1, "id"))
         self.assertIsInstance(obj1, BaseModel)
         self.assertTrue(hasattr(obj1, "__class__"))
+        """
+    def test_filestorage(self):
+        """
+        A test  that checks for file path and it creation
+        """
+        obj = FileStorage()
+        model = BaseModel()
+        self.assertIsInstance(obj,  FileStorage)
+        self.assertTrue(hasattr(obj, "_FileStorage__file_path"))
+        self.assertTrue(hasattr(obj, "_FileStorage__objects"))
+        self.assertTrue(hasattr(obj, "all"))
+        # self.assertEqual(FileStorage._FileStorage__objects,)
+        self.assertIsInstance(FileStorage._FileStorage__objects, dict)
+        self.assertTrue(hasattr(obj, "new"))
+        obj.new(model)
+        key = "{}.{}".format(model.__class__.__name__, model.id)
+        self.assertTrue(key in obj.all())
+        obj.save()
 
-
-
-
-
-
-
+        self.assertTrue(os.path.exists(FileStorage._FileStorage__file_path))
+        data = obj.reload()
