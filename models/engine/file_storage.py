@@ -2,6 +2,7 @@
 import json
 import os
 from models.base_model import BaseModel
+from models.user import User
 """
 A module that handles the serialization  and deserialization
 of and python object, it saves the content to a json file

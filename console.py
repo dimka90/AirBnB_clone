@@ -2,11 +2,12 @@
 import cmd
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
 from models.engine.file_storage import FileStorage
 """
 A python console module that accepts and interprete command line argument
 """
-prototype_names = {"BaseModel": BaseModel}
+prototype_names = {"BaseModel": BaseModel, "User":User}
 
 
 class HBNBCommand(cmd.Cmd):
