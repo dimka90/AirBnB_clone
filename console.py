@@ -7,6 +7,7 @@ from models.engine.file_storage import FileStorage
 """
 A python console module that accepts and interprete command line argument
 """
+
 prototype_names = {"BaseModel": BaseModel, "User": User}
 
 
