@@ -67,5 +67,58 @@ class HBNBCommand(cmd.Cmd):
             except IndexError:
                 print("** instance id missing **")
 
+    def do_destroy(self, line):
+        """
+        A function that show a particular instance of a class 
+        if it exist
+        """
+        line = line.split(" ")
+        if not line:
+            print("** class name missing **")
+        elif line[0] not in prototype_names:
+            print("** class doesn't exist **")
+        elif len(line) >= 1:
+            try:
+                if line[0] in prototype_names:
+                    objects = FileStorage.all(self)
+                    object_key = "{}.{}".format(line[0], line[1])
+                    try:
+                            objects.pop(object_key)
+                            storage.save()
+                            print("Deleted successfully")
+                    except KeyError:
+                        print("** no instance found **")
+            except IndexError:
+                print("** instance id missing **")
+
+    def do_all(self, line):
+        """A function that display all the instance of an object"""
+
+        # spliting the argument passed to the command line e.g 
+        # line =["all", "model"]
+        # line = line.split(" ")
+
+        # print the values if the only command enterd is (all)
+        parse_arg = line.split(" ")
+        list_of_object = []
+        dict_objects = FileStorage.all(self)
+        if not line:
+            print("coding is fun")
+            # create an empty  list to put in the the object in 
+            # Load the instance of stored in the __objects dictionary by making
+            # a call to the all method
+            # looping through the objects and  appending each value of the dictionary
+            # to the list
+            for key, value in dict_objects.items():
+                list_of_object.append(str(value))
+
+            print(list_of_object)
+        elif parse_arg[0] in prototype_names:
+            for key, value in dict_objects.items():
+                list_of_object.append(str(value))
+            print(list_of_object)
+        else:
+            print("** class doesn't exist **")
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
