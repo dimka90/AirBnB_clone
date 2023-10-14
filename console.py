@@ -123,7 +123,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         'Update the instances based on class name and id.'
-        my_arg = shlex.split(arg)
+        my_arg = arg.split(" ")
         if len(my_arg) == 0:
             print("** class name missing **")
         elif len(my_arg) == 1:
