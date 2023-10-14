@@ -6,7 +6,8 @@ from models.engine.file_storage import FileStorage
 """
 A python console module that accepts and interprete command line argument
 """
-prototype_names ={"BaseModel": BaseModel}
+prototype_names = {"BaseModel": BaseModel}
+
 
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb)"
@@ -44,7 +45,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """
-        A function that show a particular instance of a class 
+        A function that show a particular instance of a class
         if it exist
         """
         line = line.split(" ")
@@ -69,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """
-        A function that show a particular instance of a class 
+        A function that show a particular instance of a class
         if it exist
         """
         line = line.split(" ")
@@ -83,9 +84,8 @@ class HBNBCommand(cmd.Cmd):
                     objects = FileStorage.all(self)
                     object_key = "{}.{}".format(line[0], line[1])
                     try:
-                            objects.pop(object_key)
-                            storage.save()
-                            print("Deleted successfully")
+                        objects.pop(object_key)
+                        storage.save()
                     except KeyError:
                         print("** no instance found **")
             except IndexError:
@@ -94,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         """A function that display all the instance of an object"""
 
-        # spliting the argument passed to the command line e.g 
+        # spliting the argument passed to the command line e.g
         # line =["all", "model"]
         # line = line.split(" ")
 
@@ -104,11 +104,11 @@ class HBNBCommand(cmd.Cmd):
         dict_objects = FileStorage.all(self)
         if not line:
             print("coding is fun")
-            # create an empty  list to put in the the object in 
+            # create an empty  list to put in the the object in
             # Load the instance of stored in the __objects dictionary by making
             # a call to the all method
-            # looping through the objects and  appending each value of the dictionary
-            # to the list
+            # looping through the objects and  appending each value
+            # of the dictionary to the list
             for key, value in dict_objects.items():
                 list_of_object.append(str(value))
 
@@ -119,6 +119,7 @@ class HBNBCommand(cmd.Cmd):
             print(list_of_object)
         else:
             print("** class doesn't exist **")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
