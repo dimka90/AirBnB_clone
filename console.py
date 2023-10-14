@@ -7,13 +7,13 @@ from models.engine.file_storage import FileStorage
 """
 A python console module that accepts and interprete command line argument
 """
-prototype_names = {"BaseModel": BaseModel, "User":User}
+prototype_names = {"BaseModel": BaseModel, "User": User}
 
 
 class HBNBCommand(cmd.Cmd):
     """A class that defines the necessary functions and argument"""
 
-    prompt = '(hbnb) '
+    prompt = '(hbnb)'
 
     def emptyline(self):
         """A function that does nothing when a enter line is called"""
