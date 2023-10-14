@@ -121,6 +121,32 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
+    def do_update(self, arg):
+        'Update the instances based on class name and id.'
+        my_arg = shlex.split(arg)
+        if len(my_arg) == 0:
+            print("** class name missing **")
+        elif len(my_arg) == 1:
+            print("** instance id missing **")
+        elif len(my_arg) == 2:
+            print("** attribute name missing **")
+        elif len(my_arg) == 3:
+            print("** value missing **")
+        elif my_arg[0] not in my_class:
+            print("** class doesn't exist **")
+        else:
+            my_objects = FileStorage.all(self)
+            my_key = my_arg[0] + "." + my_arg[1]
+            flag = 0
+            for key, values in my_objects.items():
+                if key == my_key:
+                    flag = 1
+                    my_values = my_objects.get(key)
+                    setattr(values, my_arg[2], my_arg[3])
+                    values.save()
+            if flag == 0:
+                print("** no instance found **")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
