@@ -11,6 +11,8 @@ import os
 
 class TestBaseModel(unittest.TestCase):
     """
+    a class that provide test for all
+    classes and base cases
     """
 
     def test_basemodel(self):
