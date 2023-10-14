@@ -10,8 +10,9 @@ prototype_names = {"BaseModel": BaseModel}
 
 
 class HBNBCommand(cmd.Cmd):
-    prompt = "(hbnb)"
     """A class that defines the necessary functions and argument"""
+
+    prompt = '(hbnb) '
 
     def emptyline(self):
         """A function that does nothing when a enter line is called"""
