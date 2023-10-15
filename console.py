@@ -16,10 +16,6 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb)'
 
-    def emptyline(self):
-        """A function that does nothing when a enter line is called"""
-        pass
-
     def do_quit(self, line):
         """A function that quit the program"""
         return True
@@ -27,6 +23,11 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, line):
         """ a functioin that exit the console"""
         return True
+
+    def emptyline(self):
+        """A function that does nothing when a enter line is called"""
+        pass
+
 
     def do_create(self, line):
         """

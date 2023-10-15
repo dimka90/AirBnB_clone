@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""A python module that create a Baseclass model that other classes will inherit from"""
+"""
+A python module that create a Baseclass model 
+that other classes will inherit from
+"""
 import uuid
 from datetime import datetime
 import models
@@ -14,6 +17,12 @@ class BaseModel:
     def __init__(self, *args, **kwarg):
         """
         A function that initialise the state of an object
+
+        Args:
+             self: instance of a the Base Model 
+
+        Returns:
+               None
         """
         if kwarg:
             if 'created_at' in kwarg:
@@ -34,6 +43,11 @@ class BaseModel:
     def __str__(self):
         """
         A function that gives the string representation of the instance
+
+        Agrs:
+             self: instance of the base model class
+        Returns:
+                None
         """
         return ("[{}] ({}) {}".format(self.__class__.__name__,
                                       self.id, self.__dict__))
@@ -41,6 +55,12 @@ class BaseModel:
     def save(self):
         """
         A function that update the value of the updated object
+
+        Args: 
+            self: instance of the base model class
+        
+        Returns:
+               None
         """
 
         self.updated_at = datetime.now()
@@ -50,6 +70,12 @@ class BaseModel:
         """
         A function that returns the dictionay representation of an
         instance object
+
+        Args:
+            self: instance of the base model class
+
+        Returns:
+               dict: A dictionary representation of the objects
         """
         dict_obj = self.__dict__.copy()
 
