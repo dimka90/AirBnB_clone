@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-A python module that create a Baseclass model 
+A python module that create a Baseclass model
 that other classes will inherit from
 """
 import uuid
@@ -19,7 +19,7 @@ class BaseModel:
         A function that initialise the state of an object
 
         Args:
-             self: instance of a the Base Model 
+             self: instance of a the Base Model
 
         Returns:
                None
@@ -56,9 +56,9 @@ class BaseModel:
         """
         A function that update the value of the updated object
 
-        Args: 
+        Args:
             self: instance of the base model class
-        
+
         Returns:
                None
         """
