@@ -3,7 +3,9 @@ import json
 import os
 from models.base_model import BaseModel
 from models.user import User
-"""A module that handles the serialization  and deserializationof """
+"""
+A module that handles the serialization  and deserializationof 
+"""
 
 
 class FileStorage:
@@ -11,6 +13,7 @@ class FileStorage:
     A class that handles file implementaition and
     storage
     """
+
     __file_path = "file.json"
     __objects = {}
 
