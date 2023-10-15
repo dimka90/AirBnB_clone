@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""A python module that create a Baseclass modelthat other classes will inherit from"""
+"""
+A python module that create a Baseclass modelthat other classes will inherit from
+"""
 import uuid
 from datetime import datetime
 import models
