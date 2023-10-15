@@ -6,10 +6,8 @@ import models
 
 
 class BaseModel:
-    """
-    This is a Baseclass that other class that creat a unique id and
-    other attributes that will different each class from the other
-    """
+    """ This is a Baseclass that other class that creat a unique id and"""
+
 
     def __init__(self, *args, **kwarg):
         """
