@@ -28,7 +28,6 @@ class HBNBCommand(cmd.Cmd):
         """A function that does nothing when a enter line is called"""
         pass
 
-
     def do_create(self, line):
         """
         A function that create the instamce of The BaseModel class
