@@ -12,3 +12,24 @@ margin-inline: auto;
 margin-top: 30px;
 margin-bottom: 30px;
 }
+/* creating margin for top */
+.margin-top
+{
+    padding-top: 30px;
+}
+
+/* creating margin for top */
+.margin-bottom
+{
+    padding-bottom: 30px;
+}
+/* padding left */
+.padding-left
+{
+    padding-left: 20px;
+}
+
+.padding-right
+{
+    padding-right: 20px;
+}
