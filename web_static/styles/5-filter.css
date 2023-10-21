@@ -1,0 +1,50 @@
+.filters
+{
+background-color: white;
+height: 70px;
+width: 100%;
+border:1px solid #DDDDDD;
+border-radius:  4px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding-left: 20px;
+}
+.filters button
+{
+    font-size: 18px;
+    background-color: #FF5A5F;
+    color:#FFFFFF;
+    border: none;
+    height: 48px;
+    width: 20%;
+    border-radius: 4px;
+    margin-right: 30px;
+}
+.filters button:hover
+{
+  opacity: 80%;
+}
+.locations,
+.amenities
+{
+
+width:25%;
+height: 100%;
+}
+.locations
+{
+  border-right:1px solid #DDDDDD;
+}
+/* creating styles for the title and subtitle for the filters */
+.title
+{
+  font-weight: 600;
+}
+/* creating styles for subtitle of the filter class */
+.sub-title
+{
+  font-weight: 400;  
+  font-size: 14px;
+  margin-top: -10px;
+}
