@@ -33,3 +33,19 @@ margin-bottom: 30px;
 {
     padding-right: 20px;
 }
+
+/* flex classes */
+.d-flex
+{
+    display: flex;
+}
+/* center horinzontally*/
+.center
+{
+    margin-inline:auto;
+}
+/* Justify centering */
+.d-center
+{
+justify-content: center;
+}
