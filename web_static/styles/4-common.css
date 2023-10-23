@@ -3,7 +3,7 @@ body{
     padding: 0px;
     color: #484848;
     font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
-
+    position: relative;
 }
 .container
 {
@@ -48,4 +48,18 @@ margin-bottom: 30px;
 .d-center
 {
 justify-content: center;
+}
+/* vertical alignment */
+.space_between{
+    justify-content: space-between;
+}
+/* space envenly */
+.space_evenly
+{
+    justify-content: space-evenly;
+}
+/* center */
+.align_center
+{
+    align-items: center;
 }
